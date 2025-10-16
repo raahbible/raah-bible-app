@@ -170,3 +170,8 @@ def compare_verses():
         return jsonify(comparison)
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+# Vercel serverless handler
+import serverless_wsgi
+
+def handler(event, context):
+    return serverless_wsgi.handle_request(app, event, context)
